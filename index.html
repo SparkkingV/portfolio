@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090d">
+<meta name="description" content="Vikash — aspiring cybersecurity engineer, web developer, and IoT innovator.">
+<title>Vikash's Portfolio | Developer & Cybersecurity Learner</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #08090d;
+  --panel: #11141c;
+  --text: #f3f5f7;
+  --muted: #9ba3b4;
+  --line: rgba(255,255,255,.1);
+  --lime: #c9ff4a;
+  --cyan: #57e7ff;
+  --violet: #a78bfa;
+  --pink: #ff79c6;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Manrope, sans-serif;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+::selection { background: var(--lime); color: #08090d; }
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--lime);
+  z-index: 1000;
+  box-shadow: 0 0 15px var(--lime);
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+nav {
+  position: fixed;
+  z-index: 100;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1120px, calc(100% - 30px));
+  padding: 13px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: rgba(8,9,13,.85);
+  backdrop-filter: blur(18px);
+}
+
+.brand { font-size: 15px; font-weight: 800; letter-spacing: -.7px; }
+.brand span { color: var(--lime); }
+
+.navlinks { display: flex; align-items: center; gap: 24px; font-size: 12px; color: #c4c9d4; }
+.navlinks a:hover { color: var(--lime); }
+
+.nav-cta {
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: var(--lime);
+  color: #08090d !important;
+  font-weight: 800;
+}
+
+main { width: min(1120px, calc(100% - 40px)); margin: auto; }
+
+.hero {
+  min-height: 100svh;
+  padding: 145px 0 75px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--lime);
+  font: 11px "DM Mono", monospace;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 5px #c9ff4a18;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  50% { box-shadow: 0 0 0 10px transparent; }
+}
+
+h1 {
+  font-size: clamp(55px, 8vw, 100px);
+  line-height: .96;
+  letter-spacing: -.085em;
+  margin: 27px 0;
+  font-weight: 800;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #858b98;
+}
+
+.lime { color: var(--lime); }
+
+.hero-copy {
+  max-width: 490px;
+  color: #aab1bf;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: .25s;
+  background: transparent;
+  color: var(--text);
+}
+
+.btn:hover { transform: translateY(-4px); border-color: var(--lime); }
+.btn.primary { background: var(--lime); color: #08090d; border-color: var(--lime); }
+
+.hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 45px;
+  color: #7f8796;
+  font: 10px "DM Mono", monospace;
+  text-transform: uppercase;
+}
+
+.visual { min-height: 450px; display: grid; place-items: center; position: relative; perspective: 900px; }
+
+.orbit {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border: 1px solid #c9ff4a2c;
+  border-radius: 50%;
+  animation: spin 25s linear infinite;
+}
+
+.orbit:before {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  border: 1px solid #57e7ff22;
+  border-radius: 50%;
+  transform: rotateX(65deg);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.profile-card {
+  width: min(300px, 82%);
+  height: 375px;
+  position: relative;
+  border: 1px solid #ffffff25;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(145deg,#242a38,#101219);
+  box-shadow: 0 30px 90px #0008;
+  transform: rotateY(-7deg) rotateX(3deg);
+  transition: transform .2s;
+}
+
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  font: 9px "DM Mono", monospace;
+  color: #9ba3b4;
+}
+
+.profile-photo {
+  position: absolute;
+  inset: 48px 18px 70px;
+  border-radius: 17px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 25%,#454c5d,#151821 65%);
+  display: grid;
+  place-items: center;
+}
+
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.photo-fallback { text-align: center; color: var(--lime); }
+.photo-fallback strong { display: block; font-size: 75px; letter-spacing: -7px; }
+.photo-fallback small { color: #aab1bf; font: 9px "DM Mono", monospace; }
+
+.profile-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.profile-bottom small { display: block; color: var(--muted); margin-top: 5px; }
+
+.mini-chip {
+  border: 1px solid #c9ff4a55;
+  border-radius: 8px;
+  padding: 7px;
+  color: var(--lime);
+  font: 8px "DM Mono", monospace;
+}
+
+.float-tag {
+  position: absolute;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #151821;
+  box-shadow: 0 10px 30px #0006;
+  font: 10px "DM Mono", monospace;
+  animation: float 5s ease-in-out infinite;
+}
+
+.float-tag b { color: var(--lime); }
+.tag-one { top: 60px; right: 0; }
+.tag-two { bottom: 65px; left: 0; animation-delay: -2s; }
+
+@keyframes float { 50% { transform: translateY(-12px); } }
+
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: #0c0e13;
+  padding: 18px 0;
+  margin: 0 calc((1120px - 100vw)/2);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee span {
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a1a7b5;
+}
+
+.marquee b { color: var(--lime); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+section { padding: 100px 0; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.kicker {
+  color: var(--lime);
+  font: 11px "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.section-head h2 {
+  font-size: clamp(36px,5vw,60px);
+  line-height: 1;
+  letter-spacing: -.07em;
+  margin: 14px 0 0;
+}
+
+.section-head p {
+  max-width: 350px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.about-panel {
+  padding: 28px;
+  min-height: 250px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(145deg,#141720,#0c0e13);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-panel h3 { font-size: 22px; letter-spacing: -1px; margin: 20px 0 12px; }
+.about-panel p { font-size: 13px; color: var(--muted); line-height: 1.9; }
+
+.about-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--lime);
+  background: #c9ff4a12;
+  font-size: 20px;
+}
+
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 25px; }
+.stat { border-top: 1px solid var(--line); padding-top: 13px; }
+.stat strong { display: block; font-size: 23px; }
+.stat small { font-size: 10px; color: var(--muted); }
+
+.skills-wrap { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; }
+.skills-intro { color: var(--muted); font-size: 13px; line-height: 1.9; }
+.skill-groups { display: grid; gap: 12px; }
+
+.skill-group { padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: #0d0f15; }
+.skill-group h3 { font-size: 12px; margin: 0 0 14px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  font: 10px "DM Mono", monospace;
+  padding: 9px 11px;
+  border: 1px solid #ffffff10;
+  border-radius: 8px;
+  background: #171a23;
+  color: #c4cad6;
+  transition: .2s;
+}
+
+.chip:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+.project-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+
+.filter {
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.filter.active,.filter:hover { background: var(--lime); color: #08090d; border-color: var(--lime); }
+
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.project-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 21px;
+  background: #101219;
+  transition: transform .3s,border-color .3s;
+}
+
+.project-card:hover { transform: translateY(-6px); border-color: #c9ff4a66; }
+.project-card.hidden { display: none; }
+
+.project-art {
+  height: 190px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: #151925;
+}
+
+.art-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(#ffffff0c 1px,transparent 1px),linear-gradient(90deg,#ffffff0c 1px,transparent 1px);
+  background-size: 24px 24px;
+}
+
+.art-orb {
+  width: 115px;
+  height: 115px;
+  border-radius: 32%;
+  transform: rotate(35deg);
+  background: linear-gradient(135deg,var(--a),var(--b));
+  box-shadow: 0 0 70px color-mix(in srgb,var(--a),transparent 60%);
+  animation: orb 8s ease-in-out infinite;
+}
+
+@keyframes orb { 50% { transform: rotate(55deg) scale(1.08); } }
+
+.art-symbol { position: absolute; color: white; font-size: 36px; }
+.art-label,.art-number { position: absolute; top: 15px; font: 9px "DM Mono",monospace; color: #c4cad6; }
+.art-label { left: 16px; }
+.art-number { right: 16px; }
+
+.project-body { padding: 20px; }
+.project-meta { display: flex; justify-content: space-between; margin-bottom: 12px; }
+.project-type { color: var(--lime); font: 9px "DM Mono",monospace; text-transform: uppercase; }
+.project-year { color: #7c8492; font: 9px "DM Mono",monospace; }
+.project-body h3 { font-size: 23px; letter-spacing: -1px; margin: 0 0 10px; }
+.project-body p { color: var(--muted); font-size: 12px; line-height: 1.9; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.project-tags span { padding: 6px 8px; background: #1b1e28; border-radius: 6px; color: #aeb6c5; font: 9px "DM Mono",monospace; }
+.project-link { display: inline-block; margin-top: 16px; color: var(--lime); font-size: 20px; }
+
+.terminal { border: 1px solid #57e7ff33; border-radius: 18px; overflow: hidden; background: #090c12; }
+.terminal-bar { display: flex; align-items: center; gap: 7px; padding: 14px; border-bottom: 1px solid var(--line); background: #11141c; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #ff6d6d; }
+.dot:nth-child(2) { background: #ffd166; }
+.dot:nth-child(3) { background: #70e1a1; }
+.terminal-title { margin-left: 8px; font: 10px "DM Mono",monospace; color: #7d8797; }
+
+.terminal-content { padding: 22px; font: 12px/2 "DM Mono",monospace; color: #b6c0d0; }
+.term-line { display: flex; flex-wrap: wrap; gap: 12px; }
+.prompt { color: var(--lime); }
+.term-command { color: var(--cyan); }
+.term-output { color: #8b95a8; padding-left: 20px; overflow-wrap: anywhere; }
+.term-cursor { display: inline-block; width: 7px; height: 14px; background: var(--lime); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+#terminalForm { display: flex; gap: 10px; padding: 0 22px 22px; }
+#terminalInput { flex: 1; min-width: 0; background: #11151e; border: 1px solid #252b39; border-radius: 9px; padding: 12px; color: white; font: 12px "DM Mono",monospace; }
+
+.timeline { position: relative; }
+.timeline:before { content: ""; position: absolute; left: 13px; top: 8px; bottom: 10px; width: 1px; background: linear-gradient(var(--lime),transparent); }
+.timeline-item { display: grid; grid-template-columns: 28px 1fr; gap: 20px; padding-bottom: 25px; }
+.timeline-node { width: 27px; height: 27px; border: 1px solid #c9ff4a66; border-radius: 50%; background: #101219; color: var(--lime); display: grid; place-items: center; font: 9px "DM Mono",monospace; z-index: 1; }
+.timeline-content { padding: 21px; border: 1px solid var(--line); border-radius: 15px; background: #101219; }
+.timeline-content .time { color: var(--lime); font: 10px "DM Mono",monospace; }
+.timeline-content h3 { font-size: 17px; margin: 10px 0; }
+.timeline-content p { color: var(--muted); font-size: 12px; line-height: 1.9; margin: 0; }
+
+.contact-panel {
+  padding: clamp(28px,6vw,60px);
+  border: 1px solid #c9ff4a44;
+  border-radius: 26px;
+  background: radial-gradient(ellipse at 90% 0%,#c9ff4a15,transparent 40%),#101219;
+}
+
+.contact-grid { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 25px; }
+.contact-panel h2 { font-size: clamp(40px,7vw,78px); line-height: .98; letter-spacing: -5px; margin: 20px 0; }
+.contact-panel h2 span { color: var(--lime); }
+.contact-panel p { max-width: 500px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.socials { display: flex; flex-direction: column; gap: 8px; }
+.socials a { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; color: #c4cad6; font: 10px "DM Mono",monospace; }
+.socials a:hover { border-color: var(--lime); color: var(--lime); }
+
+footer {
+  padding: 25px 0 35px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: #747d8d;
+  font: 10px "DM Mono",monospace;
+}
+
+.reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s,transform .7s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:800px) {
+  .hero { grid-template-columns: 1fr; padding-top: 135px; }
+  .hero h1 { font-size: clamp(55px,12vw,85px); }
+  .visual { min-height: 420px; }
+  .section-head { align-items: start; flex-direction: column; }
+  .about-grid,.projects-grid { grid-template-columns: 1fr; }
+  .skills-wrap { grid-template-columns: 1fr; gap: 20px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .socials { flex-direction: row; flex-wrap: wrap; }
+  .marquee { margin: 0 calc((100% - 100vw)/2); }
+}
+
+@media(max-width:480px) {
+  main { width: calc(100% - 28px); }
+  nav { width: calc(100% - 18px); padding: 11px; }
+  .navlinks { gap: 12px; }
+  .navlinks a:not(.nav-cta) { display: none; }
+  .hero h1 { font-size: 55px; }
+  .visual { min-height: 370px; }
+  .profile-card { height: 320px; }
+  .orbit { width: 270px; height: 270px; }
+  .tag-one { right: -2px; }
+  .tag-two { left: -2px; }
+  section { padding: 75px 0; }
+  .about-panel { padding: 22px; }
+  .project-art { height: 175px; }
+  .contact-panel h2 { letter-spacing: -3px; }
+  footer { flex-direction: column; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; scroll-behavior:auto!important; transition-duration:.01ms!important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="noise"></div>
+
+<nav>
+  <a class="brand" href="#home">VIKASH<span>.</span></a>
+  <div class="navlinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact" class="nav-cta">Let's talk ↗</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="pulse"></span> Developer in progress · India</div>
+    <h1>Curiosity first.<br><span class="outline">Ideas</span> into<br><span class="lime">experiences.</span></h1>
+    <p class="hero-copy">
+      I'm Vikash — a curious builder exploring the space where
+      <strong style="color:white">cybersecurity, web development, and connected hardware</strong>
+      meet. I learn by experimenting, solving practical problems, and turning ideas into digital experiences.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#projects">Explore my work ↘</a>
+      <a class="btn" href="#contact">Get in touch ↗</a>
+    </div>
+    <div class="hero-foot">
+      <span>● Currently exploring</span>
+      <span>CYSEC / KIDORA / WEB</span>
+    </div>
+  </div>
+
+  <div class="visual" id="visual">
+    <div class="orbit"></div>
+    <div class="profile-card" id="profileCard">
+      <div class="profile-top"><span>VIKASH / PORTFOLIO</span><span>✳ ONLINE</span></div>
+      <div class="profile-photo">
+        <img src="vikash.png" alt="Portrait of Vikash"
+          onerror="this.style.display='none';document.getElementById('photoFallback').style.display='block'">
+        <div class="photo-fallback" id="photoFallback" style="display:none">
+          <strong>V.</strong><small>ADD YOUR PHOTO</small>
+        </div>
+      </div>
+      <div class="profile-bottom">
+        <div><strong>Vikash S.</strong><small>Builder · Learner · Creator</small></div>
+        <span class="mini-chip">BUILD MODE: ON</span>
+      </div>
+    </div>
+    <div class="float-tag tag-one"><b>01 /</b> BUILD MODE: ON</div>
+    <div class="float-tag tag-two"><b>~/</b> curiosity.exe running</div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Cybersecurity</span><b>✳</b><span>Full-stack web</span><b>✳</b>
+    <span>IoT & embedded systems</span><b>✳</b><span>Creative development</span><b>✳</b>
+    <span>Problem solving</span><b>✳</b><span>Cybersecurity</span><b>✳</b>
+    <span>Full-stack web</span><b>✳</b><span>IoT & embedded systems</span><b>✳</b>
+    <span>Creative development</span><b>✳</b><span>Problem solving</span><b>✳</b>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-head reveal">
+    <div><div class="kicker">01 — About me</div><h2>A learner by nature.<br>A builder by choice.</h2></div>
+    <p>I learn by experimenting, solving practical problems, and building projects that help me understand technology beyond the surface.</p>
+  </div>
+
+  <div class="about-grid">
+    <article class="about-panel reveal">
+      <div class="about-icon">⌘</div>
+      <h3>Learn it. Test it. Build it.</h3>
+      <p>I prefer learning through implementation. Whether I'm developing an app, exploring Linux, or connecting hardware to a dashboard, I try to understand how each piece works—not just make it run.</p>
+      <div class="stats">
+        <div class="stat"><strong>Build</strong><small>Through practice</small></div>
+        <div class="stat"><strong>Explore</strong><small>New technology</small></div>
+        <div class="stat"><strong>Improve</strong><small>Every iteration</small></div>
+      </div>
+    </article>
+
+    <article class="about-panel reveal">
+      <div class="about-icon" style="color:var(--cyan);background:#57e7ff12">⌁</div>
+      <h3>Technology with a purpose.</h3>
+      <p>I'm interested in building technology that is useful, reliable, and secure. My long-term direction is to understand systems end-to-end—from the interface people use to the infrastructure and devices behind it.</p>
+      <div class="chips">
+        <span class="chip">Security-first</span>
+        <span class="chip">Problem solver</span>
+        <span class="chip">Always curious</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head reveal">
+    <div><div class="kicker">02 — My toolkit</div><h2>Learning the tools.<br>Building the future.</h2></div>
+    <p>These are the technologies I'm learning and using through projects. My toolkit keeps growing as I experiment and improve.</p>
+  </div>
+
+  <div class="skills-wrap">
+    <p class="skills-intro reveal">I focus on understanding fundamentals, then using the right tools for the problem. Each technology becomes more meaningful when I apply it to something real.</p>
+
+    <div class="skill-groups reveal">
+      <div class="skill-group">
+        <h3>01 / CODE & WEB</h3>
+        <div class="chips">
+          <span class="chip">HTML</span><span class="chip">CSS</span>
+          <span class="chip">JavaScript</span><span class="chip">Python</span>
+          <span class="chip">Flask</span><span class="chip">Responsive UI</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>02 / SECURITY & SYSTEMS</h3>
+        <div class="chips">
+          <span class="chip">Linux</span><span class="chip">Kali Linux</span>
+          <span class="chip">Networking</span><span class="chip">Security fundamentals</span>
+          <span class="chip">Ethical hacking labs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>03 / DATA & HARDWARE</h3>
+        <div class="chips">
+          <span class="chip">Supabase</span><span class="chip">PostgreSQL</span>
+          <span class="chip">ESP32 / Arduino</span><span class="chip">IoT prototypes</span>
+          <span class="chip">Git / GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <div><div class="kicker">03 — Selected projects</div><h2>Projects with<br>a purpose.</h2></div>
+    <p>A selection of the things I'm building, testing, and learning from. Each project represents a problem explored and a skill put into practice.</p>
+  </div>
+
+  <div class="project-controls reveal">
+    <button class="filter active" data-filter="all">All projects</button>
+    <button class="filter" data-filter="web">Web & apps</button>
+    <button class="filter" data-filter="iot">IoT & hardware</button>
+    <button class="filter" data-filter="security">Security</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <article class="project-card reveal" data-category="web">
+      <div class="project-art" style="--a:#a78bfa;--b:#4263eb">
+        <div class="art-grid"></div><span class="art-label">SOCIAL / REALTIME</span><span class="art-number">P—01</span>
+        <div class="art-orb"></div><span class="art-symbol">✳</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-type">Web application</span><span class="project-year">2026</span></div>
+        <h3>Chatinova</h3>
+        <p>A real-time messaging experience with profile customization, online presence, and a responsive interface built to make connecting easier.</p>
+        <div class="project-tags"><span>Flask</span><span>Supabase</span><span>PostgreSQL</span><span>Realtime</span></div>
+        <a class="project-link" href="https://chatinova.onrender.com" target="_blank" rel="noreferrer">Explore project ↗</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal" data-category="iot web">
+      <div class="project-art" style="--a:#57e7ff;--b:#2575fc">
+        <div class="art-grid"></div><span class="art-label">THERAPY / MONITORING</span><span class="art-number">P—02</span>
+        <div class="art-orb"></div><span class="art-symbol">⌁</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-type">IoT + web platform</span><span class="project-year">IN PROGRESS</span></div>
+        <h3>KIDORA</h3>
+        <p>An IoT-enabled therapy-monitoring concept connecting hardware data to a simple dashboard for tracking activity and supporting therapist workflows.</p>
+        <div class="project-tags"><span>ESP</span><span>Supabase</span><span>Dashboard</span><span>IoT</span></div>
+        <a class="project-link" href="https://sparkkingv.github.io/kidora/" target="_blank" rel="noreferrer">Explore project ↗</a>
+      </div>
+    </article>
+
+    
+<article class="project-card reveal" data-category="security">
+  <div class="project-art" style="--a:#00e5ff;--b:#6c3cff">
+    <div class="art-grid"></div>
+    <span class="art-label">SECURITY / INTELLIGENCE</span>
+    <span class="art-number">P—03</span>
+    <div class="art-orb"></div>
+    <span class="art-symbol">⌘</span>
+  </div>
+
+  <div class="project-body">
+    <div class="project-meta">
+      <span class="project-type">Cybersecurity platform</span>
+      <span class="project-year">2025</span>
+    </div>
+
+    <h3>Cyber Vault</h3>
+    <p>A cybersecurity-focused project built around security knowledge, practical labs, ethical hacking resources, and organized documentation for exploring the world of digital security.</p>
+
+    <div class="project-tags">
+      <span>Cybersecurity</span>
+      <span>Linux</span>
+      <span>Ethical Hacking</span>
+      <span>Security Labs</span>
+    </div>
+
+    <a class="project-link" href="https://sparkkingv.github.io/CyberVault/">Explore project ↗</a>
+  </div>
+</article>
+
+
+    <article class="project-card reveal" data-category="iot">
+      <div class="project-art" style="--a:#ff79c6;--b:#ff8c42">
+        <div class="art-grid"></div><span class="art-label">CONNECTED / HARDWARE</span><span class="art-number">P—04</span>
+        <div class="art-orb"></div><span class="art-symbol">⌬</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-type">Electronics exploration</span><span class="project-year">CONCEPT</span></div>
+        <h3>Wireless Sensor Systems</h3>
+        <p>Exploring sensor-driven monitoring, wireless data transfer, and visual dashboards that turn physical signals into useful information.</p>
+        <div class="project-tags"><span>Arduino</span><span>ESP32</span><span>Sensors</span><span>Data</span></div>
+        <a class="project-link" href="#contact">Discuss project ↗</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal" data-category="web">
+      <div class="project-art" style="--a:#fb923c;--b:#e11d48">
+        <div class="art-grid"></div><span class="art-label">WEBSITE / CONCEPT</span><span class="art-number">P—05</span>
+        <div class="art-orb"></div><span class="art-symbol">✺</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-type">Website concept</span><span class="project-year">EXPLORATION</span></div>
+        <h3>FORGE Fitness</h3>
+        <p>A gym website concept focused on a strong visual identity, clear membership calls-to-action, and a high-energy digital experience.</p>
+        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>UI design</span></div>
+        <a class="project-link" href="https://sparkkingv.github.io/forgefitness/">Explore project ↗</a>
+      </div>
+    </article>
+
+    <article class="project-card reveal" data-category="web">
+      <div class="project-art" style="--a:#818cf8;--b:#d946ef">
+        <div class="art-grid"></div><span class="art-label">PERSONAL / CREATIVE</span><span class="art-number">P—06</span>
+        <div class="art-orb"></div><span class="art-symbol">✳</span>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span class="project-type">Personal portfolio</span><span class="project-year">2026</span></div>
+        <h3>Vikash's Portfolio</h3>
+        <p>A personal space to explore my projects, technical interests, and progress—designed as an experience rather than a static résumé.</p>
+        <div class="project-tags"><span>Interaction</span><span>Motion design</span><span>Frontend</span></div>
+        <a class="project-link" href="#home">Back to top ↗</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="lab">
+  <div class="section-head reveal">
+    <div><div class="kicker">04 — Interactive playground</div><h2>Meet the terminal.</h2></div>
+    <p>Try a command and explore my profile from a terminal-inspired interface. This is a simulated portfolio feature, not a real shell.</p>
+  </div>
+
+  <div class="terminal reveal">
+    <div class="terminal-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="terminal-title">vikash@portfolio: ~/home</span>
+    </div>
+
+    <div class="terminal-content" id="terminalContent">
+      <div class="term-line"><span class="prompt">vikash@portfolio:~$</span><span class="term-command">help</span></div>
+      <div class="term-output">Available commands: help, about, skills, projects, contact, clear</div>
+      <div id="terminalOutput"></div>
+    </div>
+
+    <form id="terminalForm">
+      <span class="prompt" style="padding-top:10px">›</span>
+      <input id="terminalInput" placeholder="try: projects" aria-label="Enter terminal command" autocomplete="off">
+      <button class="btn" type="submit">Run ↵</button>
+    </form>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="section-head reveal">
+    <div><div class="kicker">05 — My journey</div><h2>Progress over<br>perfection.</h2></div>
+    <p>This is an evolving path, not a finished story. The aim is to keep learning, building, documenting, and improving.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-node">01</div>
+      <div class="timeline-content">
+        <span class="time">FOUNDATIONS</span>
+        <h3>Learning how the web works</h3>
+        <p>Building responsive interfaces, learning Python and Flask, connecting databases, and understanding how to publish projects online.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-node">02</div>
+      <div class="timeline-content">
+        <span class="time">BUILDING IN PUBLIC</span>
+        <h3>Turning experiments into applications</h3>
+        <p>Developing Chatinova, exploring role-based dashboards, realtime data, and the practical details that make an app useful.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-node">03</div>
+      <div class="timeline-content">
+        <span class="time">CURRENT FOCUS</span>
+        <h3>Cybersecurity and connected systems</h3>
+        <p>Strengthening Linux and networking fundamentals while exploring ESP-based hardware, IoT data flows, and security-minded development.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-node">04</div>
+      <div class="timeline-content">
+        <span class="time">WHAT'S NEXT</span>
+        <h3>Ship. Document. Improve.</h3>
+        <p>Publish project case studies, add public repositories, practise in authorised lab environments, and turn prototypes into more reliable experiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-panel reveal">
+    <div class="contact-grid">
+      <div>
+        <div class="kicker">06 — Contact</div>
+        <h2>Have a challenge?<br><span>Let's build it.</span></h2>
+        <p>Have a project idea, collaboration opportunity, or feedback on something I've built? I'm always interested in thoughtful conversations and new challenges.</p>
+        <div class="contact-actions">
+          <a class="btn primary" id="emailLink" href="mailto:vikashtech1106@gmail.com?subject=Let's%20connect">Email me ↗</a>
+          <button class="btn" id="copyEmail" type="button">Copy email ⧉</button>
+        </div>
+      </div>
+
+      <div class="socials">
+        <a href="https://github.com/sparkkingv" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/vikash-s-s/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/sparkking_v/" target="_blank" rel="noreferrer">Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© <span id="year"></span> Vikash · Personal Portfolio</span>
+  <span>Built with curiosity · Always evolving ✳</span>
+  <a href="#home">Back to top ↑</a>
+</footer>
+</main>
+
+<script>
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+$("#year").textContent = new Date().getFullYear();
+
+// Reading progress indicator
+window.addEventListener("scroll", () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  $("#progress").style.width = (max > 0 ? scrollY / max * 100 : 0) + "%";
+}, { passive: true });
+
+// Reveal sections as they enter the viewport
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+$$(".reveal").forEach(el => observer.observe(el));
+
+// Portrait card tilt interaction
+const visual = $("#visual");
+const card = $("#profileCard");
+
+if (matchMedia("(pointer:fine)").matches) {
+  visual.addEventListener("pointermove", event => {
+    const rect = visual.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - .5;
+    const y = (event.clientY - rect.top) / rect.height - .5;
+    card.style.transform =
+      `rotateY(${-7 + x * 16}deg) rotateX(${3 - y * 10}deg)`;
+  });
+
+  visual.addEventListener("pointerleave", () => {
+    card.style.transform = "rotateY(-7deg) rotateX(3deg)";
+  });
+}
+
+// Filter project cards
+$$(".filter").forEach(button => {
+  button.addEventListener("click", () => {
+    $$(".filter").forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+
+    $$(".project-card").forEach(project => {
+      const categories = project.dataset.category.split(" ");
+      const show = filter === "all" || categories.includes(filter);
+      project.classList.toggle("hidden", !show);
+
+      if (show) {
+        project.classList.remove("visible");
+        requestAnimationFrame(() => project.classList.add("visible"));
+      }
+    });
+  });
+});
+
+// Simulated interactive terminal
+const responses = {
+  help: "Available commands: help, about, skills, projects, contact, clear",
+  about: "I'm Vikash — a builder exploring cybersecurity, web development, and IoT.",
+  skills: "Current toolkit: Python, HTML/CSS/JS, Flask, Linux, Supabase, ESP/Arduino.",
+  projects: "Chatinova | KIDORA | Project CYSEC | Wireless Sensor Systems | FORGE Fitness | Personal Portfolio.",
+  contact: "Use the contact section below. vikashtech1106@gmail.com",
+};
+
+$("#terminalForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const input = $("#terminalInput");
+  const command = input.value.trim().toLowerCase();
+  const output = $("#terminalOutput");
+
+  if (!command) return;
+
+  if (command === "clear") {
+    output.innerHTML = "";
+    input.value = "";
+    return;
+  }
+
+  const line = document.createElement("div");
+  line.className = "term-line";
+
+  const prompt = document.createElement("span");
+  prompt.className = "prompt";
+  prompt.textContent = "vikash@portfolio:~$";
+
+  const text = document.createElement("span");
+  text.className = "term-command";
+  text.textContent = command;
+
+  line.append(prompt, text);
+
+  const result = document.createElement("div");
+  result.className = "term-output";
+  result.textContent = responses[command] ||
+    `Command not found: ${command}. Type "help" to see available commands.`;
+
+  output.append(line, result);
+  input.value = "";
+  $("#terminalContent").scrollTop = $("#terminalContent").scrollHeight;
+});
+
+// Contact email helper
+const EMAIL = "vikashtech1106@gmail.com";
+
+$("#copyEmail").addEventListener("click", async () => {
+  if (EMAIL === "YOUR_EMAIL@example.com") {
+    alert("First replace YOUR_EMAIL@example.com in the HTML with your actual email.");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(EMAIL);
+    $("#copyEmail").textContent = "Copied! ✓";
+  } catch {
+    alert("Email: " + EMAIL);
+  }
+});
+</script>
+</body>
+</html>
